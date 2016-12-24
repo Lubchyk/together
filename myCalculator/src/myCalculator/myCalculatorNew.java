@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 public class myCalculatorNew {
 
 	public static void main(String[] args) {
-		// панель ggg
+		// панель gggkjhg
 		JPanel windowContent = new JPanel();
 		
 		//менеджер для панелі
