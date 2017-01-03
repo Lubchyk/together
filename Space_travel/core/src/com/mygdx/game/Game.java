@@ -8,26 +8,33 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture spaceShip;
+	Texture star;
+	Texture bullet;
+	
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		star = new Texture("star.png");
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		Gdx.gl.glClearColor(1, 0, 0, 1); //задає колір фону
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);// очищає екран кольором вище
+		batch.begin(); // починає маювати
+		batch.draw(star, 0, 0); // дану картинку в точці
+		batch.end(); // закінчує малювання
 	}
 	
-	@Override
+	@Override // клас який звільняє пам'ять
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		star.dispose();
+	}
+	public void upDate () { // клас для розрахунків
+		
 	}
 }
+
