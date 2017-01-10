@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch; // область малювання
@@ -12,6 +14,7 @@ public class Game extends ApplicationAdapter {
 	Texture bullet;
 	Background background;
 	Hero hero;
+	Life life;
 	final int ASTEROID_COUNT = 20;
 	Asteroids[] asteroid;
 	final int BULLET_COUNT = 10;
@@ -24,6 +27,7 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		background = new Background();
+		life = new Life();
 		hero = new Hero(100, 100);
 		asteroid = new Asteroids[ASTEROID_COUNT];
 		for (int i = 0; i < ASTEROID_COUNT; i++) {
@@ -42,21 +46,28 @@ public class Game extends ApplicationAdapter {
 		upDate(); // викликає метод який буде проводити розрахунки
 		Gdx.gl.glClearColor(1, 0, 0, 1); //задає колір фону
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);// очищає екран кольором вище
-		batch.begin(); // починає маювати
-		background.render(batch); 
-		hero.render(batch);
-		for (int i = 0; i < ASTEROID_COUNT; i++) {
-			asteroid[i].render(batch);
-		}
-		for (int i = 0; i < BULLET_COUNT; i++)
-			if (bullet10[i].isActive()) {
-				batch.draw(bullet, bullet10[i].getPosition().x, bullet10[i].getPosition().y);
+		if (life.getLifeCount() > 0) {
+			batch.begin(); // починає маювати
+			background.render(batch); 
+			hero.render(batch);
+			for (int i = 0; i < ASTEROID_COUNT; i++) {
+				asteroid[i].render(batch);
 			}
+			for (int i = 0; i < BULLET_COUNT; i++)
+				if (bullet10[i].isActive()) {
+					batch.draw(bullet, bullet10[i].getPosition().x, bullet10[i].getPosition().y);
+				}
 		
-		
-		batch.end(); // закінчує малювання
+			life.render(batch);
+			batch.end(); // закінчує малювання
+		}
+		else {
+			background.gameOver();
+			batch.begin();
+			background.render(batch);
+			batch.end();
+		}
 	}
-	
 	@Override // клас який звільняє пам'ять
 	public void dispose () {
 		batch.dispose();
@@ -79,6 +90,37 @@ public class Game extends ApplicationAdapter {
 					}
 				}
 			}
+		for (int i = 0; i < ASTEROID_COUNT; i++) {
+			if (asteroid[i].getRect().contains(hero.getPosition())) {
+			hero.setPosition(100.0f, 100.0f);
+			asteroid[i].reCreate();
+			life.setPosition();
+			}
+			
+		}
+		
+		
+//		if (life.getLifeCount() != 0) {
+//			background.gameOver();
+//			//while (life.getLifeCount() == 0) {
+//				
+//				batch.begin();
+//				
+//				background.render(batch);
+//				batch.end();
+//			}
+			
+			//hero.dispose();
+	//	}
+			
+//		for (int i = 0; i < ASTEROID_COUNT; i++) {
+//			if (asteroid[i].getRect().contains(hero.rect())){
+//			Vector2 d =	hero.rect.getPosition(Vector2 position);
+//				
+//				
+//				life.contact();
+//			}
+//		}
 	}
 }
 

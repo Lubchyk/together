@@ -24,6 +24,12 @@ public class Background {
 				speed = 1.0f + (float)Math.random() * 7.0f;
 			}
 		}
+		
+		
+		public void dispose () {
+			//batch.dispose();
+			star.dispose();
+		}
 	}
 	
 	private Texture star;
@@ -49,5 +55,9 @@ public class Background {
 		for (int i = 0; i < STARS_COUNT; i++){
 			stars[i].update();
 		}
+	}
+	public void gameOver() {
+	background = new Texture("gameOver.png");
+	
 	}
 }
