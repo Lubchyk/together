@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
 
-
 public class Bullet {
 	private Vector2 position; // вектор 2 це поєднання  x i y в змінній position
 	private float speed;
@@ -14,7 +13,6 @@ public class Bullet {
 	public boolean isActive() { // гетер
 		return active;
 	}
-	
 	public Bullet() {
 		position = new Vector2(0,0);
 		speed = 0.0f ;
@@ -31,8 +29,7 @@ public class Bullet {
 	public void update() {
 		position.x += speed; // дозволяє рухатися зіркам
 		if (position.x > 1100) {
-			destroy();
-			
+			destroy();			
 		}
 	}
 }

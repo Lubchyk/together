@@ -19,8 +19,7 @@ public class Asteroids {
 		rect = new Rectangle(position.x, position.y, 95, 95 ); 
 		speed = 6.0f + (float)Math.random() * 6.0f; // задаємо кожній зірці різну швидкість
 		if (asteroid == null) asteroid = new Texture("asteroids.png");
-	}
-	
+	}	
 	public void reCreate(){ // перезапускає астероїди які вилитіли
 		position.x = 1100 + (float)Math.random() * 1100;
 		position.y = (float)Math.random() * 670;
@@ -28,13 +27,11 @@ public class Asteroids {
 	}
 	public void render(SpriteBatch batch) { // малює астероїди
 		batch.draw(asteroid, position.x, position.y);
-	}
-	
+	}	
 	public void update() {
 		position.x -= speed; // обновляє астероїди
 		if (position.x < -60) reCreate();
 		rect.x = position.x;
 		rect.y = position.y - 12;
 	}
-
 }

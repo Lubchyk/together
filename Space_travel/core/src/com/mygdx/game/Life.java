@@ -18,8 +18,7 @@ public class Life {
 		position3 = new Vector2(100, 630);
 		life = new Texture("life.png");
 		//speed = 1.0f + (float)Math.random() * 7.0f; // задаємо кожній зірці різну швидкість
-	}
-	
+	}	
 	public void render(SpriteBatch batch) { // метод який малює задній фон в нього передаємо кординати
 		batch.draw(life, position.x, position.y);
 		batch.draw(life, position2.x, position.y);
@@ -31,21 +30,11 @@ public class Life {
 		if (lifeCount == 2) position2.x = -150;
 		if (lifeCount == 1) position.x = -150;
 		lifeCount--;
-	}
-	
+	}	
 	public int getLifeCount() {
 		return lifeCount;
-	}
-	
+	}	
 	public void contact() {
 		life.dispose();
 	}
-//	public void update() {
-//		position.x -= speed; // дозволяє рухатися зіркам
-//		if (position.x < -20) {
-//			position.x = 1100;
-//			position.y = ((float)Math.random() * 670);
-//			speed = 1.0f + (float)Math.random() * 7.0f;
-//		}
-//	}
 }

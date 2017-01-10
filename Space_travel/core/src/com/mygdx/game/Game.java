@@ -5,8 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position;
+
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch; // область малювання
@@ -20,9 +19,6 @@ public class Game extends ApplicationAdapter {
 	final int BULLET_COUNT = 10;
 	public static Bullet[] bullet10;
 
-	
-	
-	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -37,8 +33,7 @@ public class Game extends ApplicationAdapter {
 		for (int i = 0; i < BULLET_COUNT; i++) {
 			bullet10[i] = new Bullet();
 		}
-		bullet = new Texture("bullet.png");
-		
+		bullet = new Texture("bullet.png");	
 	}
 
 	@Override
@@ -57,7 +52,6 @@ public class Game extends ApplicationAdapter {
 				if (bullet10[i].isActive()) {
 					batch.draw(bullet, bullet10[i].getPosition().x, bullet10[i].getPosition().y);
 				}
-		
 			life.render(batch);
 			batch.end(); // закінчує малювання
 		}
@@ -85,8 +79,7 @@ public class Game extends ApplicationAdapter {
 				for (int j = 0; j < ASTEROID_COUNT; j++) { //так розраховується зіткнення із пулею
 					if (asteroid[j].getRect().contains(bullet10[i].getPosition())) {//якщо прямокутник астероїда вміщає координати пулі то... 
 						bullet10[i].destroy();
-						asteroid[j].reCreate();
-						
+						asteroid[j].reCreate();					
 					}
 				}
 			}
@@ -96,31 +89,7 @@ public class Game extends ApplicationAdapter {
 			asteroid[i].reCreate();
 			life.setPosition();
 			}
-			
 		}
-		
-		
-//		if (life.getLifeCount() != 0) {
-//			background.gameOver();
-//			//while (life.getLifeCount() == 0) {
-//				
-//				batch.begin();
-//				
-//				background.render(batch);
-//				batch.end();
-//			}
-			
-			//hero.dispose();
-	//	}
-			
-//		for (int i = 0; i < ASTEROID_COUNT; i++) {
-//			if (asteroid[i].getRect().contains(hero.rect())){
-//			Vector2 d =	hero.rect.getPosition(Vector2 position);
-//				
-//				
-//				life.contact();
-//			}
-//		}
 	}
 }
 

@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -8,8 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Background {
 	class Star {
 		private Vector2 position; // вектор 2 це поєднання  x i y в змінній position
-		private float speed;
-		
+		private float speed;		
 		public Star() {
 			//Gdx.graphics.getWidth();// 1100 і 670 можна замінити даними методами
 			//Gdx.graphics.getHeight();
@@ -23,9 +21,7 @@ public class Background {
 				position.y = ((float)Math.random() * 670);
 				speed = 1.0f + (float)Math.random() * 7.0f;
 			}
-		}
-		
-		
+		}		
 		public void dispose () {
 			//batch.dispose();
 			star.dispose();
@@ -41,8 +37,7 @@ public class Background {
 		star = new Texture("star.png");
 		stars = new Star[STARS_COUNT];// створюємо порожній масив в кількості константи
 		for (int i = 0; i < STARS_COUNT; i++) { //заповнюємо всі комірки масива хзірками
-			stars[i] = new Star();
-			
+			stars[i] = new Star();			
 		}
 	}
 	public void render(SpriteBatch batch) { // метод який малює задній фон в нього передаємо кординати
@@ -58,6 +53,5 @@ public class Background {
 	}
 	public void gameOver() {
 	background = new Texture("gameOver.png");
-	
 	}
 }
