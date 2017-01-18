@@ -1,0 +1,198 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+/**
+ * Created by mlv on 10.01.2017.
+ */
+public class Example {
+
+    /** вводимо дані із клави варіант 1*/
+    Scanner scanner = new Scanner(System.in);
+    int a = scanner.nextInt();
+    String name = scanner.nextLine();
+   static int s = 5;
+    /** вводимо дані із клави варіант 2*/
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    String q = reader.readLine();
+    int f = Integer.parseInt(q);
+    double e = Double.parseDouble(q);
+
+    public Example() throws IOException {
+    }
+    /** вираховує парне і не парне число механізм слідуючий
+     * бере отримане число і поміщає в нього двійку до того часу,
+     * поки число не заповнеться, якщо остання двійка помістилася повністю отримаємо 0 і число відповідно було парне
+     * якщо число не парне то остання 2 поміститься тільки на половину і ми отримаємо число 1*/
+    public static void namber(int a) {
+
+        int b = a % 2;
+        if (a > 0 && a < 10 && b == 1) System.out.println("нечетное однозначное число");
+        if (a > 0 && a < 10 && b == 0) System.out.println("четное однозначное число");
+
+        if ((a > 0)) {
+            b = a % 2;
+            if (b == 0) System.out.println("положительное четное число");
+            else if (b == 1) System.out.println("положительное нечетное число");
+        }
+        else if(a < 0) {
+            b = a % 2;
+            if (b == 0) System.out.println("отрицательное четное число");
+            else if (b == -1) System.out.println("отрицательное нечетное число");
+        }
+        else if (a == 0) System.out.println("нулевое число");
+    }
+    /** Мшнімум із 2 чисел*/
+    public static int update(int a, int  b) {
+        if (a > b) return a;
+        else return b;
+    }
+    /** приклади для if*/
+    public static void  update(int a, int b, int c) {
+        if (a > 50 && a < 100)
+            System.out.println("Число " + a + " содержится в интервале.");
+        else  System.out.println("Число " + a + " не содержится в интервале.");
+        if ((a > (b + c)) || (b >(a + c)) || (c > (a + b))   ){
+            System.out.println("Треугольник не существует.");
+        }
+        else System.out.println("Треугольник существует.");
+    }
+
+    /**порівняння довжини двох строк*/
+    public static void  comparison(String name1, String name2) {
+        if (name1.equals(name2)) System.out.println("Имена идентичны");
+        else if (name1.length() == name2.length()) System.out.println("Длины имен равны");
+    }
+    /**цикл for*/
+    public static void yaer(int yaer) {
+        int a = 0;
+        int x1 = 365;
+        int x2 = 366;
+        for (int i = 0; i < 2017; i = i + 4) {
+            if (yaer == 1700 || yaer == 1800 || yaer == 1900 || yaer == 2100 || yaer == 2200 || yaer == 2300)
+            {
+                System.out.println("количество дней в году: " + x1);
+                break;
+            }
+            if (yaer == i)
+            {
+                System.out.println("количество дней в году: " + 366);
+                a = 1;
+                break;
+            }
+        }
+        if(a == 0){
+            System.out.println("количество дней в году: " + 365); }
+    }
+    /** цикл while і приклад таблиці множення */
+    public void  multiplicationTables() {
+        int a = 1;
+        while (true) {
+            System.out.println(1 * a + " " + 2 * a + " " + 3 * a + " " + 4 * a + " " + 5 * a + " " + 6 * a + " " + 7 * a + " "
+                    + 8 * a + " " + 9 * a + " " + 10 * a);
+            a++;
+            if (a > 10) {
+                break;
+            }
+        }
+        while (a < s) {
+            System.out.println(a);
+            a++;
+        }
+    }
+    /** метод який вираховує відстань між двома точками*/
+    public static double getDistance(int x1, int y1, int x2, int y2) {
+        double a = x1 - x2;
+        a = a * a;
+        double b = y1 - y2;
+        b = b * b;
+        double result = a + b;
+        result = Math.sqrt(result);
+        return result;
+    }
+/**знаходить найдовші строки і дрокує їх */
+    public  void  printMaxLength() throws Exception {
+        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list2 = new ArrayList<String>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String b;
+        String c = "";
+        for (int i = 0; i < 5; i++) {
+            String a = reader.readLine();
+            list.add(a);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            b = list.get(i);
+            if (b.length() > c.length()) c = b;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            b = list.get(i);
+            if (b.length() == c.length())
+                list2.add(b);
+        }
+        for (int i = 0; i < list2.size(); i++) {
+            System.out.println(list2.get(i));
+        }
+    }
+/**те саме що на один вище тільки по іншому принципу і знаходить самі менші строки */
+    public void printMinLength() throws Exception {
+        ArrayList<String> list = new ArrayList<String>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int min;
+        for (int i = 0; i < 5; i++) {
+            String a = reader.readLine();
+            list.add(a);
+        }
+        min = list.get(0).length();
+        for (int i = 0; i < list.size(); i++) {
+            if (min > list.get(i).length()) min = list.get(i).length();
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (min == list.get(i).length()) System.out.println(list.get(i));
+        }
+    }
+/**приклад як коротко ініціалізувати ARRAYLISR
+ * Як коротко перебігатися по ньому в циклі for
+ * і як відловлювати букви (символи) із строки*/
+    public void Array1() {
+        List<String> list = new ArrayList<String>();
+        Collections.addAll(list, "роза", "лира", "лоза");
+        for (int i = 0; i < list.size();) {
+            if (list.get(i).contains("р") && !list.get(i).contains("л")) list.remove(i);
+            else if (list.get(i).contains("л") && !list.get(i).contains("р"))
+            { list.add(i, list.get(i));
+                i+=2; }
+            else if (list.get(i).contains("л") && list.get(i).contains("р")) i++;
+            else i++;
+        }
+        for (String x : list)
+        {
+            System.out.println(x);
+        }
+    }
+/** приклад колекції MAP */
+    public void hashMap() {
+        Map<String, String> var = new HashMap<String, String>();
+        var.put("арбуз","ягода");
+        var.put("банан", "трава");
+        Iterator<Map.Entry<String, String>> iterator = var.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> pair = iterator.next();
+            System.out.println(pair.getKey() + " - " + pair.getValue());
+        }
+    }
+    /** приклад колекції SET */
+    public void hashSet() {
+        Set<String> var = new HashSet<String>();
+        var.add("ирис");
+        var.add("картофель");
+        Iterator<String> iterator = var.iterator();
+        while (iterator.hasNext()) {
+            String s = iterator.next();
+            System.out.println(s);
+        }
+    }
+
+
+}
