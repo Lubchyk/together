@@ -193,6 +193,24 @@ public class Example {
             System.out.println(s);
         }
     }
-
+/**Stack Trace*/
+    public static String method1()
+    {
+       // method2();
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        /**отримує назву метода який викликав даний метод */
+        String s = stackTraceElements[2].getMethodName();
+        /**отримує номер строчки з якої був викликаний даний метод */
+        int f = stackTraceElements[2].getLineNumber();
+        /**отримує глибину стек трейса (кількість методів) */
+        int g = stackTraceElements.length;
+        /** перебіг в циклі*/
+        String p = null ;
+        System.out.println(stackTraceElements[0].getMethodName());
+        for (StackTraceElement element : stackTraceElements) {
+           p =  element.getMethodName();
+        }
+        return stackTraceElements[2].getMethodName();
+    }
 
 }
